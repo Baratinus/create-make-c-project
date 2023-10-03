@@ -2,6 +2,11 @@
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
+        -e|--exo)
+            $0 `echo "-d exo$2 -c exo_$2"`
+            exit 0
+            ;;
+            
         -d|--directory)
             mkdir "$2"
             cd "$2"
@@ -77,6 +82,7 @@ while [[ "$#" -gt 0 ]]; do
             echo "Les arguments disponibles sont :"
             echo "  -c, --create        création du fichier .c main et du Makefile"
             echo "  -d, --directory     création d'un répertoire pour la création de fichier"
+            echo "  -e, --exo           -d et -c avec le numéro de l'exercice"
             echo "  -h, --help          affichage de l'aide"
             echo "  -m, --module        création d'un fichier module .c + .h et modification du Makefile"
             exit 0 ;;
